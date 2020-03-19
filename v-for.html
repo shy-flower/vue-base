@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue之ifelse</title>
+</head>
+<body>
+    <div id="app">
+        <div>水果列表</div>
+        <ul>  <!--这里的item是自定义的，代表的是遍历数组得到的某一个数组，in是关键字（不可少） fruits是数组名 -->
+                <!-- {{intem}}这里是将v-for遍历到的结果放进插入表达式 -->
+            <li v-for='item in  fruits'>{{item}}</li>
+          <!-- 增加访问：数据下标（索引） -->
+       <!-- 这里的intem(得到遍历数组的数据)和 index（得到遍历数组的下标）名都是自定义名称 -->
+          <li v-for='(item,index) in  fruits'>{{item+'____'+index}}</li>
+           <!-- 加上key(区分兄弟节点，给每一个兄弟节点标注一个唯一的标识,从而提高性能)标识： -->
+          <li :key='index' v-for='(item,index) in myfruits'>
+              <span>{{item.ename}}</span>
+              <span>-----------</span>
+              <span>{{item.cname}}</span>
+          </li>
+
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var vm=new Vue({
+          el:"#app",
+          data:{
+              /*数组*/
+            fruits:['apple','orange','bannana'],
+            myfruits:[{
+                ename:'apple',
+                cname:'苹果',
+              },
+              {
+                ename:'orange',
+                cname:'橘子',
+              },
+              {
+                  ename:'bannana',
+                  cname:'香蕉'
+              }
+            
+            ]
+          } ,
+          methods: {
+              
+          },
+      })
+    
+    </script>
+</body>
+</html>
