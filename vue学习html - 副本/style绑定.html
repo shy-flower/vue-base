@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>style绑定</title>
+</head>
+<body>
+  <div id="app">                  <!--  style样式处理之对象案例 -->
+            <div v-bind:style="{border:borderStyle,width:widthStyle, height:heightStyle}"></div>
+            <button v-on:click="hen">切换</button>
+            <div v-bind:style="objStyle">第二个div</div>
+                                  <!-- styley样式 之数组对象案例： -->
+            <div v-bind:style="[objStyle,overrideStyles]">第三个div</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                borderStyle:"1px solid blue",
+                widthStyle:"100px",
+                heightStyle:"200px",
+                objStyle:{
+                    border:"1px solid green",
+                    height:"100px",
+                    width:"100px"
+                    /*对象简写方式*/
+                },
+                overrideStyles: {
+                    border:"5px solid orange",
+                    backgroundColor:"blue"
+                }
+                
+            },
+            methods:{
+                hen:function(){
+                    this.heightStyle="100px"
+                    this.objStyle.width="200px"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

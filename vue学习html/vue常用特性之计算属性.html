@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue计算属性</title>
+</head>
+<body>
+    <div id="app">
+       <div>{{msg}}</div>
+       调用reveseSting
+       <div>{{reveseSting}}</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var vm=new Vue({
+          el:"#app",
+          data:{
+            msg:'你好'
+          } ,
+          methods: {
+              
+          },
+          computed:{
+              reveseSting:function(){
+                  //定义计算方法
+                  //计算属性基于data内的内容去改变
+                  //反转字符串 必须使用return 将结果返回
+ //split（）分割字符串的方法，reverse（）颠倒字符串的方法，join（）
+                return this.msg.split('').reverse().join('');
+              }
+          }
+      })
+    
+    </script>
+</body>
+</html>
