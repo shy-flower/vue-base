@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue之ifelse</title>
+</head>
+<body>
+    <div id="app">
+       <span>姓：</span>
+       <input type="text" v-model="firstName"><br>
+
+       <span>名：</span>
+       <input type="text" v-model="laseName">
+       <div>{{allname}}</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var vm=new Vue({
+          el:"#app",
+          data:{
+            firstName:"",
+            laseName:"",
+            allname:""
+          } ,
+          methods:{
+          },
+          //侦听器方法
+          watch:{
+            firstName:function(val){
+                this.firstName=val+""+this.laseName
+            },
+            laseName:function(val){
+                this.allname=this.firstName+""+val
+
+            }
+          }
+        /*计算属性 实现效果的一种方式
+         computed:{
+              allname:function(){
+                  return this.first+this.name         
+                      }
+          }*/
+      })
+    
+    </script>
+</body>
+</html>

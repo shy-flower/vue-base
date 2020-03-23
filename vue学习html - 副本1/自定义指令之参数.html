@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue之指令参数3333</title>
+</head>
+<body>
+    <div id="app">
+       <input type="text" v-focus>
+       <input type="text" v-color="msg">
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+/*Vue.directive('focus',{
+    //全局定义指令
+    inserted:function(el){
+        el.focus()
+    }
+})
+*/
+/*Vue.directive('color',{
+    bind:function(el,binding){
+       // console.log(binding.value.color)
+        el.style.backgroundColor = binding.value.color
+    }
+})*/
+      var vm=new Vue({
+          el:"#app",
+          data:{
+            msg:{
+                color:'red'
+            }
+          } ,
+          methods: {
+              
+          },
+          //局部定义参数  //定义多个指令
+          directives:{
+            focus:{
+                inserted:function(el){
+                    el.focus()
+                }
+            },
+            color:{            //binding是形参
+                bind:function(el,binding){
+                    el.style.backgroundColor = binding.value.color
+
+                }
+            }
+          }
+      })
+    
+    </script>
+</body>
+</html>
