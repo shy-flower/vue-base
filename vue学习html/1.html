@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue之ifelse</title>
+    <style type="text/css">
+  
+      
+        table tr td{
+            border: 1px solid blue;
+            list-style: none;
+            width: 120px;
+            height: 60px;
+         /* float: left; */
+            text-align: center;
+            line-height: 55px;
+            
+        }
+        div{
+            float: none;
+        }
+        .fan{
+            display: none;
+        }
+        .color{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <td v-on:click="text(index)" :key="item.id" :class='xuan==index?"color":""' v-for='(item,index) in list'>{{item.title}}</td>
+               
+            </tr>
+        </table>
+        <div  >
+            <div :class='xuan!=index?"fan":""' v-for='(item,index) in list'>
+                <img :src='item.path' >
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var vm=new Vue({
+          el:"#app",
+          data:{
+            xuan:1,
+            list:[ 
+                
+                {
+                id:0,
+                 title:'apple',
+                 path:'img/apple.png'
+                },
+                {
+                id:1,
+                 title:'orange',
+                 path:'img/orange.png'
+                },
+                {
+                id:2,
+                 title:'lemon',
+                 path:'img/lemon.png',
+           
+             }]
+            
+          } ,
+          
+          
+          methods: {
+              text:function(index){
+                  this.xuan=index
+              }
+          },
+      })
+    
+    </script>
+</body>
+</html>
