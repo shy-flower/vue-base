@@ -30,7 +30,7 @@
                     if(uname =='单红艳'){
                         that.tip="用户名已经存在，请更换"
                     }else{
-                        this.tip="用户名可以使用"
+                        that.tip="用户名可以使用"
                         //remark
                     }
 
@@ -41,8 +41,8 @@
             uname:function(val){
                 //调用后台
                 this.checkName(val);
-                //修改提示信息
-                this.tip='正在验证..'
+                //修改提示信息  
+              this.tip='正在验证...'
             }
           }
       })
