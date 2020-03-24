@@ -32,20 +32,29 @@
         .inp1 {
             background-color: #F49000;
         }
+        .kan{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        .span1{
+            background-color: #F49000;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <div style="margin:0 auto;">
+        <div  class="kan" >
+            
             <h2>图书管理</h2>
-            <form action="#">
+           <span class="span1" cellspacing="0" cellpadding="0">
                 <span>编号：</span>
                 <input type="text" v-model="id">
                 <span>名称：</span>
                 <input type="text" v-model=name>
                 <button @click="handle" >提交</button>
-            </form>
+            </span>
 
 
             <table cellspacing="0" cellpadding="0">
@@ -74,7 +83,8 @@
                     </tbody>
 
             </table>
-        </div>
+            
+   
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
@@ -119,7 +129,8 @@
                     book.name = this.name
                     book.date = ""
                     this.books.push(book);
-                    
+                    this.id=""
+                    this.name=""
 
                 }
             },
