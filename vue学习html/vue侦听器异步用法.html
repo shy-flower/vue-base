@@ -27,14 +27,14 @@
           } ,
           methods: {
               checkName:function(uname){
-                  var that = this;
+                  var a = this;
                   //调用后台接口，但是可以使用定时任务的方式模拟接口调用
                   setTimeout(function(){
                       //模拟接口调用
                     if(uname=='admin'){
-                         that.tip='用户已经存在，请更换一个'
+                    a.tip='用户已经存在，请更换一个'
                     }else{
-                        that.tip = '用户名可以使用'
+                        a.tip = '用户名可以使用'
                     }
                 } ,2000)
 
@@ -50,6 +50,24 @@
               }
           }
       })
+
+      function Person(){
+          this.name =  ''
+          this.age = 18
+          this.show= function(){
+              console.log(this.age)
+          }
+      }
+
+      var p = new Person()
+      p.show()
+      function log(age){
+          var name = 19
+          consol
+          e.log(name);
+      }
+
+      log()
     
     </script>
 </body>
