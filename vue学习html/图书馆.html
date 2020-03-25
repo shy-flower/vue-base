@@ -75,7 +75,7 @@
                             <td>{{item.name}}</td>
                             <td>{{item.date}}</td>
                             <td>
-                                <a href="" @click.prevent>修改</a>
+                                <a href="" @click.prevent="toEdit">修改</a>
                                 <span>|</span>
                                 <a href="" @click.prevent>删除</a>
                             </td>
@@ -129,6 +129,7 @@
                     book.name = this.name
                     book.date = ""
                     this.books.push(book);
+                    //清空表单
                     this.id=""
                     this.name=""
 
