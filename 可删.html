@@ -40,10 +40,11 @@
                 <thead>
                     <div class="bak">
                         <span>编号:</span>
-                        <span> <input type="text" v-model="id"></span>
+                        <!-- disabled可以将输入框设为"禁用状态"值：true禁用，false正常使用 -->
+                        <span> <input type="text" v-model="id" :disabled="flag"></span>
                         <span>名称：</span>
                         <span> <input type="text" v-model="name"></span>
-                        <span><button @click="hendle">提交</button></span>
+                        <span><button v-on:click="handle">提交</button></span>
 
 
 
@@ -57,13 +58,13 @@
                 <tbody class="tab">
                     <tr :key="item.id" v-for="item in books">
 
-                        <td v-model='id'>{{item.id}}</td>
-                        <td v-model='name'>{{item.name}}</td>
-                        <td v-model='dade'>{{item.date}}</td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.date}}</td>
                         <td>
-                            <a href="#">修改</a>
+                            <a href="#" v-on:click="toEdit(item.id)">修改</a>
                             <span>|</span>
-                            <a href="#">删除</a>
+                            <a href="#" @click="deletBook(item.id)">删除</a>
                         </td>
                     </tr>
                 </tbody>
@@ -78,6 +79,7 @@
         var vm = new Vue({
             el: "#app",
             data: {
+                flag: false,
                 id: "",
                 name: "",
                 books: [{
@@ -99,23 +101,67 @@
                         name: "西游记",
                         date: ""
                     }
+
                 ]
             },
             methods: {
-                hendle: function () {
-                    //添加图书
-                    var book = {}
-                    book.id = this.id
-                    book.name = this.name
-                    book.date = this.date
-                    this.books.push(book)
-                    //清空表单
+                handle: function () {
+                    //修改原始数据
+                    if (this.flag) {
+                        //编辑操作
+                        //就是根据当前的id去更新数组中对应的数据
+
+                        this.books.some((bbb) => {
+                            if (bbb.id == this.id) {
+                                bbb.name = this.name
+                                //完成更新操之后，需要终止循环
+                                return true
+                                s
+                            }
+
+                        });
+                        this.flag = false;
+                    } else {
+                        //添加图书
+                        var book = {}
+                        book.id = this.id
+                        book.name = this.name
+                        book.date = ""
+                        this.books.push(book)
+                        //清空表单
+                        this.id = ""
+                        this.name = ""
+                    }
                     this.id = ""
                     this.name = ""
-                    this.date = ""
                 },
 
+                toEdit: function (id) {
+
+                    //禁止修改id
+                    this.flag = true
+                    // console.log(id)
+                    //根据id查询出要编辑的数据 filter方法英文是过滤器的意思，它会返回一个新的符合条件的数组
+                    var book = this.books.filter(function (item) {
+                        return item.id == id
+                    })
+                    console.log(book)
+                    //把获取到的信息填充到表单
+                    this.id = book[0].id
+                    this.name = book[0].name
+                },
+                deletBook: function (id) {
+                    //删除图书
+                    //根据id查找元素的索引
+                    var index = this.books.findIndex(function (aaa) {
+                        return aaa.id == id
+                    })
+                    //根据索引删除数据元素
+                    // splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。
+                    this.books.splice(index, 1)
+                }
             },
+
         })
     </script>
 </body>
