@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class细节</title>
+    <style type="text/css">
+        .div1{
+           border: 1px solid red;
+            height:150px;
+            width: 150px;
+        }
+        .div2{
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">      <!-- 数组和对象结合使用 -->
+  <div v-bind:class="[div1class,{div2:isDiv2}]">测试样式</div>
+  <button v-on:click=> 切换</button>
+  <div v-bind:class="arrClasses">3</div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script  type="text/javascript">
+   
+  
+   var  vm=new Vue({
+       /* 1.对象绑定和数组绑定可以结合使用
+        2.class绑定的值可以简化操作
+        3.默认的class如何处理*/
+         el:"#app",
+         data:{
+             div1class:"div1",
+             isDiv2:true,
+             arrClasses:["div1class"]
+
+             
+         },
+         methods:{
+             
+             
+         }
+   })
+    </script>
+</body>
+</html>

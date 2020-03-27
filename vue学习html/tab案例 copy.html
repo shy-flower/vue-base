@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue之ifelse</title>
+    <style type="text/css">
+   table tr td{
+       border: 1px solid blue;
+       height: 50px;
+       width: 100px;
+       text-align: center;
+   }
+   img{
+       width: 320px;
+       height: 200px;
+   }
+   
+  
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li :key="item.id" v-for='(item,index) in list'>{{item.title}}</li>
+           
+ 
+        </ul>
+        <table>
+            <tr>
+                <td>apple</td>
+                <td>lemo</td>
+                <td>ornage</td>
+            </tr>
+        </table>
+        <div :key="item.id" v-for="(item,index) in list">
+           <div><img src="item.path" ></div>
+        
+        </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var vm=new Vue({
+          el:"#app",
+          data:{
+            list:[{
+                id:1,
+                title:'apple',
+                path:'apple.png',
+            }],
+            list:[{
+                id:2,
+                title:'lemo',
+                path:'lemo.png',
+            }],
+            list:[{
+                id:3,
+                title:'ornage',
+                path:'ornage.png',
+            }]
+          
+          
+          } ,
+          methods: {
+              
+          },
+      })
+    
+    </script>
+</body>
+</html>

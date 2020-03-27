@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+    <style type="text/css">
+        /* [v-cloak]是一个属性选择器 */
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 冒泡到父元素div，使得div“num”也使用到了handel函数 -->
+        <!-- 可以通过.stop阻止冒泡 -->
+        <div>{{num}}  </div>
+            <button v-on:click.stop="handel">点击一下</button>
+      
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                num: 0
+            },
+            methods: {
+                handel: function () {
+                    this.num += 1
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

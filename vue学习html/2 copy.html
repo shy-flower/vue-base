@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue之ifelse</title>
+    <style type="text/css">
+       table tr td{
+        border: 1px solid blue;
+        width: 60px;
+        height: 30px;
+        text-align: center;
+
+    }
+    .fan{
+        background-color: orange;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+     <table>
+         <tr>
+             <td v-on:clike="text1(index)">苹果</td>
+             <td v-on:clike="text1" >橘子</td>
+             <td v-on:clike="text1">柠檬</td>
+         </tr>
+         <div v-show='flag1'><img src="img/apple.png" ></div>
+         <div v-show='flag2'><img src="img/orange.png" ></div>
+         <div  v-show='flag3'><img src="img/lemon.png" ></div>
+        </div>
+     </table>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var vm=new Vue({
+          el:"#app",
+          data:{
+              xuan:0,
+              flag1:false,
+              flag2:false,
+              flag3:false,
+
+          } ,
+          methods: {
+              text1:function(index){
+                  this.flag1=index
+              }
+              
+          },
+      })
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue之ifelse</title>
+    <style type="text/css">
+        table tr td {
+            border:1px solid blue;
+            width: 120px;
+            height: 60px;
+            text-align: center;
+          
+        }
+        table tr td.xuan{
+            background-color: orange;
+        }
+        ul li{
+            list-style: none;
+        }
+       .div1{
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+   
+        <table>
+            <tr >
+                <td v-on:click="click1(index)" :class='xuan==index?"xuan":""'  :key="item.id" v-for='(item,index) in list'>{{item.title}}</td>
+         
+            </tr>
+        </table>
+        <div >
+            <div :class='xuan==index?"":"div1"' :key="item.id" v-for='(item,index) in list' >
+                <img :src="item.path" >
+            </div>
+          
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var vm=new Vue({
+          el:"#app",
+          data:{
+             
+              xuan:0,//当前选中选项卡的索引
+            list:  [{id:1,
+                  title:'apple',
+                  path:'img/apple.png'},
+              
+                 {
+                  id:2,
+                  title:'orange',
+                  path:'img/orange.png'
+                  },
+
+                 {id:3,
+                  title:'lemon',
+                  path:'img/lemon.png'}],
+      },
+          methods: {
+              click1:function(index){
+                  //在这里实现选项卡切换操作：本质就是操作类名
+                  //如何操作类名？就是通过索引（xuan）来操作
+                this.xuan=index  
+    
+
+              }
+          },
+      })
+    
+    </script>
+</body>
+</html>

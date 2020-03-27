@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按键相加12221</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{msg}}</div>
+        <button v-on:click.stop='jj1'>点击相加</button>
+        <a href="www.baidu.com" v-on:click.prevent="doThis"   >33123123</a>
+        <button v-on:click='jj2(123,456,$event)'> 点击显示传参</button>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       var vm=new Vue({
+             /*事件绑定-参数传递
+             1.如果事件直接绑定函数名称，那么默认会传递事件对象作为事件函数的第一个参数
+             2.如果事件绑定函数调用。那么事件对象必须作为最后一个参数显示传递，并且对象的名称必须是$event*/
+           el:"#app",
+           data:{
+                msg:0
+           },
+        methods:{
+            jj2:function(p,p1,sevent) {
+                console.log(p,p1)
+                console.log(sevent.target.innerHTML)
+                this.msg++
+            },
+             jj1:function(event){
+                 console.log(event.target.innerHTML)
+                 this.msg++
+
+             }
+            }
+       })
+    </script>
+</body>
+</html>
