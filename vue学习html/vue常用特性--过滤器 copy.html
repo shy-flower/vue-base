@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg">
+        <!-- 过滤器引用 -->
+        <div>{{msg | upper}}</div>
+        <!-- 过滤器连级引用 -->
+        <div>{{msg | upper | lower}}</div>
+             <!-- 这里使用upper过滤器 -->
+        <div :abc='msg|upper '>测试数据</div>
+
+        
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    /*过滤器  全局过滤器
+    
+             这里的upper是过滤器名称自定义，这里的val是表示要过滤的数据                */   
+   /* Vue.filter('upper',function(val){
+         //charAt（）方法可以返回指定位置的字符
+         //toUpperCase（）方法用于把字符串转为大写
+         //slice（）方法可从已有的数组中返回选定的元素
+      return  val.charAt(0).toUpperCase() +val.slice(1)  
+    })
+    Vue.filter('lower',function(val){
+         //charAt（）方法可以返回指定位置的字符
+         //toLowerCase()可以将字符串转为小写
+         //slice（）方法可从已有的数组中返回选定的元素
+      return  val.charAt(0).toLowerCase() +val.slice(1)  
+    })*/
+
+      var vm=new Vue({
+          el:"#app",
+          data:{
+               msg:""
+          } ,
+          methods: {
+              
+          },
+          //局部过滤器
+        filters:{
+          upper:function(val){
+      return  val.charAt(0).toUpperCase() +val.slice(1)  
+
+          }
+        }  
+      })
+    
+    </script>
+</body>
+</html>
